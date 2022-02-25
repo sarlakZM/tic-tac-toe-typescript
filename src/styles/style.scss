@@ -1,0 +1,213 @@
+@mixin breakpoint($point) {
+  @if $point == xxl {
+    @media screen and (min-width: 1680px) {
+      @content;
+    }
+  } @else if $point == xl {
+    @media screen and (min-width: 1443px) {
+      @content;
+    }
+  } @else if $point == l {
+    @media screen and (min-width: 1023px) {
+      @content;
+    }
+  } @else if $point == m {
+    @media screen and (min-width: 767px) {
+      @content;
+    }
+  } @else if $point == s {
+    @media screen and (min-width: 639px) {
+      @content;
+    }
+  } @else if $point == ss {
+    @media screen and (min-width: 450px) {
+      @content;
+    }
+  }
+}
+
+@mixin display($theme: DarkGray) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+// @include display();
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  section {
+      @include display();
+      flex: 0 0 200px;
+      flex-direction: column; 
+      margin-top : 20px
+  }
+  
+  .game-board ul {
+      display: grid;
+      margin: 15px;
+      grid-template-columns: repeat(3, auto);
+
+      .cell{
+        width: 50px;
+        height: 50px;
+        margin: 0px;
+        cursor: pointer;
+        line-height: 100px;
+        @include display();
+        position: relative;
+        font-size: 3rem;
+        font-weight: bold;
+        border: 1px solid #9aa0a0;
+        transition: background 0.2s ease-in-out;
+  
+        &:hover {
+          cursor: pointer;
+          background: #a3f1ee;
+        }
+  
+      }
+  }
+
+  .box{
+    @include display();
+    margin-bottom: 10px;
+    @include breakpoint(s) {
+      width: 45.66%;
+    }
+    @include breakpoint(m) {
+      width: 60.66%;
+    }
+    @include breakpoint(l) {
+      width: 45.66%;
+    }
+    @include breakpoint(xl) {
+      width: 32%;
+    }
+    @include breakpoint(xxl) {
+      width: 30%;
+    }
+    width: 100%;
+
+    button {
+      outline: none;
+      color:#fff;;
+      border: none;
+      font-size: 1rem;
+      font-weight: bold;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      text-align: center;
+      line-height: 36px;
+      padding: 0 16px;
+      border-radius: 4px;
+      background-color: #5bc7e7;
+      margin: 0px 7px 0px 0;
+      box-shadow: 0 0 #0003, 0 0 #00000024, 0 0 #0000001f;
+      transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1);
+      
+      &:hover{
+        cursor: pointer;
+        background-color: #3699b7;
+      }
+    }
+
+    #sizeGrid {
+        border: 3px solid #f1f1f1;
+        border-radius: 0px;
+        font-size: 1rem;
+        font-weight: bold;
+        position: relative;
+        text-align: center;
+        width: 20%;
+        line-height: 30px;
+        background: #f1f1f1;
+        box-shadow: 0 1px 1px 0 rgb(65 69 73 / 30%), 0 1px 3px 1px rgb(65 69 73 / 15%);
+        box-sizing: content-box;
+        transition: box-shadow .3s, border .3s, -webkit-box-shadow .3s;
+        border-bottom: 1px solid #5d5e5e;
+    }
+ 
+  }
+
+
+   
+  .cheked:hover {
+    background: #e74d4d;
+    padding: 5px;
+  }
+  
+  .loser{
+    background: #e74d4d;
+    color: #fff;
+  }
+  
+  .winner {
+    color: #0ff30f;
+    padding: 5px;
+
+    &:hover {
+      background: #0ff30f;
+      color: #fff;
+    }
+  }
+  
+ 
+  .loader {
+    width: 60px;
+
+    .loader-wheel {
+      animation: spin 1s infinite linear;
+      border: 2px solid rgba(30, 30, 30, 0.5);
+      border-left: 4px solid #3699b7;
+      border-radius: 50%;
+      height: 50px;
+      margin-bottom: 10px;
+      width: 50px;
+    }
+    .loader-text {
+      color: #3699b7;
+      font-family: arial, sans-serif;
+      &:after {
+        content: 'Loading';
+        animation: load 2s linear infinite;
+      }
+    }
+  }
+  
+
+  
+
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes load {
+    0% {
+      content: 'Loading';
+    }
+    33% {
+      content: 'Loading.';
+    }
+    67% {
+      content: 'Loading..';
+    }
+    100% {
+      content: 'Loading...';
+    }
+  }
+  

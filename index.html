@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+     <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tic Tac Toe Game</title>
+    <link href="styles/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>    
+    <section>
+      <div class="box">
+        <button class="game-restart" onclick="restartGame()">Restart Game</button>
+        <input type="number" id="sizeGrid" name="sizeGrid"
+            min="2" max="15" placeholder="Size Grid = 3" >
+      </div>
+      <h2 class="game-status"></h2>
+      <div class="box2 game-board"><ul></ul></div>
+      		
+      <div class="loader">
+        <div class="loader-wheel"></div>
+        <div class="loader-text"></div>
+      </div>  
+
+    </section>
+    <script src="bundle.js"></script>
+  </body>
+</html>
